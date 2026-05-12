@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://calma.bh',
+  site: 'https://hassandevelopment.github.io',
+  base: '/Calma',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap({

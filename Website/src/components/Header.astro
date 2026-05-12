@@ -10,6 +10,7 @@ interface Props {
 
 const { t, lang, currentPath } = Astro.props;
 const nav = t.nav;
+const base = import.meta.env.BASE_URL;
 ---
 
 <header id="site-header" class="fixed inset-block-start-0 inset-inline-start-0 inset-inline-end-0 z-50 transition-all duration-300">
@@ -19,7 +20,7 @@ const nav = t.nav;
       <!-- Logo -->
       <a href={lang === 'ar' ? '/ar' : '/'} aria-label={t.aria.logo} class="flex-shrink-0">
         <img
-          src="/calma-logo.svg"
+          src={`${base}calma-logo.svg`}
           alt="Calma"
           width="44"
           height="44"

@@ -41,7 +41,8 @@ const canonicalENAlt = lang === 'ar'
   ? `${siteUrl}${Astro.url.pathname.replace(/^\/ar/, '') || '/'}`
   : `${siteUrl}${Astro.url.pathname}`;
 
-const currentPath = Astro.url.pathname;
+const basePrefix = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentPath = Astro.url.pathname.replace(basePrefix, '') || '/';
 ---
 
 <!doctype html>
