@@ -1,11 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import ExperienceSection from '../../components/ExperienceSection.astro';
-import ServicesSection from '../../components/ServicesSection.astro';
+import Ribbon from '../../components/Ribbon.astro';
+import SpaceSection from '../../components/SpaceSection.astro';
+import Gallery from '../../components/Gallery.astro';
 import SignatureSection from '../../components/SignatureSection.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
+import ThalgoStrip from '../../components/ThalgoStrip.astro';
 import TeamGrid from '../../components/TeamGrid.astro';
 import VisitSection from '../../components/VisitSection.astro';
+import WhatsAppFab from '../../components/WhatsAppFab.astro';
 import ar from '../../i18n/ar.json';
 
 const t = ar;
@@ -22,7 +27,7 @@ const schema = {
   "telephone": "+97366677745",
   "priceRange": "$$",
   "currenciesAccepted": "BHD",
-  "image": "https://calma.bh/images/room-massage-copper.jpg",
+  "image": "https://calma.bh/images/hero-treatment-room.jpg",
   "logo": "https://calma.bh/calma-logo.svg",
   "address": {
     "@type": "PostalAddress",
@@ -54,15 +59,20 @@ const schema = {
     <link
       rel="preload"
       as="image"
-      href={`${base}/images/room-massage-copper.jpg`}
+      href={`${base}/images/hero-treatment-room.jpg`}
       type="image/jpeg"
     />
   </Fragment>
 
   <Hero t={t} />
-  <ExperienceSection t={t} />
-  <ServicesSection t={t} lang={lang} />
+  <Ribbon t={t} />
+  <SpaceSection t={t} />
+  <Gallery t={t} />
   <SignatureSection t={t} />
+  <ServicesSection t={t} lang={lang} />
+  <ReviewsSection t={t} />
+  <ThalgoStrip t={t} />
   <TeamGrid t={t} lang={lang} />
   <VisitSection t={t} />
+  <WhatsAppFab ariaLabel={t.aria.whatsapp} />
 </BaseLayout>

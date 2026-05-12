@@ -1,7 +1,5 @@
 ---
 import services from '../data/services.json';
-import BookButton from './BookButton.astro';
-import WhatsAppButton from './WhatsAppButton.astro';
 
 interface Props {
   t: Record<string, any>;
@@ -9,166 +7,148 @@ interface Props {
 }
 
 const { t, lang } = Astro.props;
-const s = t.services;
+const s = t.services_section;
+const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu";
 
 const tabs = [
-  { key: 'massage', label: s.tab_massage, data: services.massage },
-  { key: 'spa',     label: s.tab_spa,     data: services.spa },
-  { key: 'salon',   label: s.tab_salon,   data: services.salon },
+  { id: 'massage', label: s.tab_massage, count: services.massage.length },
+  { id: 'spa',     label: s.tab_spa,     count: services.spa.length },
+  { id: 'salon',   label: s.tab_salon,   count: services.salon.length },
 ];
+
+function formatDurations(durs: number[]) {
+  return durs.length === 1 ? `${durs[0]} min` : `${durs.join(' / ')} min`;
+}
+
+function formatPrice(row: any) {
+  if (row.prices.length === 1) {
+    return row.priceFrom ? `from BD ${row.prices[0]}` : `BD ${row.prices[0]}`;
+  }
+  return `BD ${row.prices.join(' / ')}`;
+}
 ---
 
-<section id="services" class="bg-warm-cream texture-paper section-wrap relative">
-  <div class="content-wrap">
+<section id="services" class="section services">
+  <div class="container">
 
-    <div class="text-center mb-14 reveal">
-      <div class="inline-flex items-center gap-3 mb-4">
-        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
-        <p class="eyebrow">{s.eyebrow}</p>
-        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
+    <div class="section-head reveal">
+      <h2 class="h2">
+        {s.head_line1} <span class="italic">{s.head_italic}</span>
+      </h2>
+      <div class="meta">
+        <span class="eyebrow">{s.eyebrow}</span>
+        <p class="lead">{s.lead}</p>
       </div>
-      <h2 class="section-headline font-display text-text-primary font-medium leading-display">{s.headline}</h2>
     </div>
 
-    <!-- Tab buttons -->
-    <div
-      role="tablist"
-      aria-label={s.headline}
-      class="flex justify-center gap-2 mb-10 reveal"
-    >
-      {tabs.map(({ key, label }, i) => (
+    <!-- Tab bar -->
+    <div class="tabs" role="tablist" id="services-tabs">
+      {tabs.map(tab => (
         <button
           role="tab"
-          id={`tab-${key}`}
-          aria-controls={`panel-${key}`}
-          aria-selected={i === 0 ? 'true' : 'false'}
-          data-tab={key}
-          class={`tab-btn px-5 py-2.5 rounded-btn font-body font-semibold text-small tracking-wide transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${i === 0 ? 'bg-calma-deep text-text-inverse' : 'bg-warm-stone text-text-muted hover:bg-warm-stone/70'}`}
+          aria-selected={tab.id === 'massage' ? 'true' : 'false'}
+          class={`tab ${tab.id === 'massage' ? 'active' : ''}`}
+          data-tab={tab.id}
         >
-          {label}
+          {tab.label}<span class="count">{tab.count}</span>
         </button>
       ))}
+      <span class="tab-underline" id="tab-underline" aria-hidden="true"></span>
+      <span class="tab-meta">{s.price_note}</span>
     </div>
 
-    <!-- Tab panels -->
-    {tabs.map(({ key, data }, i) => (
+    <!-- Menu panels -->
+    {['massage', 'spa', 'salon'].map(category => (
       <div
-        id={`panel-${key}`}
+        class="menu"
         role="tabpanel"
-        aria-labelledby={`tab-${key}`}
-        hidden={i !== 0}
-        class="tab-panel"
+        id={`panel-${category}`}
+        data-panel={category}
+        style={category !== 'massage' ? 'display:none' : ''}
       >
-        <div class="rounded-card bg-white/50 backdrop-blur-sm overflow-hidden shadow-card border border-warm-stone/80">
-          <!-- Header row -->
-          <div class="hidden md:grid grid-cols-[1fr_auto_auto_auto] gap-4 px-6 py-3 bg-warm-stone/50 text-text-muted font-body font-semibold text-small uppercase tracking-eyebrow">
-            <span>{s.col_service}</span>
-            <span class="text-end">{s.col_duration}</span>
-            <span class="text-end">{s.col_price}</span>
-            <span class="sr-only">{s.book_row}</span>
-          </div>
-
-          <!-- Service rows -->
-          {data.map((row: any) => (
-            <div class="service-row gold-divider grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-1 md:gap-4 px-6 py-4 items-center hover:bg-warm-cream/60 transition-colors duration-200">
-
-              <!-- Name (AR + EN) -->
-              <div>
-                <span class="block font-body font-medium text-text-primary text-[0.95rem]">
-                  {lang === 'ar' ? row.ar : row.en}
-                </span>
-                {lang === 'ar'
-                  ? <span class="block font-body text-small text-text-muted">{row.en}</span>
-                  : <span class="block font-body text-small text-text-muted" lang="ar" dir="rtl">{row.ar}</span>
-                }
-                {(row.note_en || row.note_ar) && (
-                  <span class="block text-[0.75rem] text-text-muted/70 italic mt-0.5">
-                    {lang === 'ar' ? row.note_ar : row.note_en}
-                  </span>
-                )}
-              </div>
-
-              <!-- Duration -->
-              <div class="md:text-end">
-                <span class="font-body text-small text-text-muted">
-                  {row.durations.join(' / ')} {s.min}
-                </span>
-              </div>
-
-              <!-- Price -->
-              <div class="md:text-end">
-                <span class="font-body font-semibold text-text-primary">
-                  {row.price_from ? `${s.from} ` : ''}
-                  {row.prices.join(' / ')} {s.bhd}
-                </span>
-              </div>
-
-              <!-- Book link -->
-              <div class="md:text-end">
-                <a
-                  href="https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center text-[0.75rem] font-semibold text-calma-mid hover:text-calma-deep underline underline-offset-2 transition-colors duration-200"
-                >
-                  {s.book_row}
-                </a>
-              </div>
+        {(services as any)[category].map((row: any, i: number) => (
+          <a
+            class="menu-row reveal in"
+            href={FRESHA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={`animation: fadeIn 380ms cubic-bezier(.22,1,.36,1) both; animation-delay: ${i * 30}ms`}
+          >
+            <div class="left">
+              <span class="en">{row.en}</span>
+              <span class="ar">{row.ar}</span>
+              {row.note && <span class="row-note">{row.note}</span>}
             </div>
-          ))}
-        </div>
+            <div class="right">
+              <span class="durs">{formatDurations(row.durations)}</span>
+              <span class="prices">
+                {row.priceFrom && <span class="from">from</span>}
+                BD {row.prices.length === 1 ? row.prices[0] : row.prices.join(' / ')}
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     ))}
 
-  </div>
+    <div class="menu-bottom">
+      <p class="note">{s.bottom_note}</p>
+      <a class="btn btn-filled" href={FRESHA_URL} target="_blank" rel="noopener noreferrer">
+        {s.book_cta}
+      </a>
+    </div>
 
-  <!-- Sticky mobile CTA bar -->
-  <div
-    id="services-sticky-cta"
-    class="fixed inset-block-end-0 inset-inline-start-0 inset-inline-end-0 z-30 bg-calma-deep/95 backdrop-blur-sm px-5 py-3 flex gap-3 justify-center items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden"
-    aria-hidden="true"
-  >
-    <BookButton label={s.sticky_book} variant="filled" class="text-xs px-4 py-2.5 flex-1" />
-    <WhatsAppButton label={s.sticky_whatsapp} variant="outlined" class="text-xs px-4 py-2.5 flex-1" />
   </div>
 </section>
 
 <script>
-  /* Tab switching */
-  const tabBtns  = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
-  const panels   = document.querySelectorAll<HTMLElement>('.tab-panel');
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
+  const panels  = document.querySelectorAll<HTMLElement>('[data-panel]');
+  const underline = document.getElementById('tab-underline')!;
+  const tabsList  = document.getElementById('services-tabs')!;
+
+  function moveUnderline(btn: HTMLButtonElement) {
+    const parentRect = tabsList.getBoundingClientRect();
+    const btnRect    = btn.getBoundingClientRect();
+    underline.style.transform = `translateX(${btnRect.left - parentRect.left}px)`;
+    underline.style.width     = `${btnRect.width}px`;
+  }
+
+  function activateTab(id: string) {
+    tabBtns.forEach(b => {
+      const active = b.dataset.tab === id;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', String(active));
+    });
+    panels.forEach(p => {
+      p.style.display = p.dataset.panel === id ? '' : 'none';
+    });
+    const activeBtn = document.querySelector<HTMLButtonElement>(`[data-tab="${id}"]`)!;
+    moveUnderline(activeBtn);
+
+    // Re-trigger reveal on newly shown rows
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    document.querySelectorAll(`[data-panel="${id}"] .reveal:not(.in)`).forEach(el => observer.observe(el));
+  }
 
   tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab!;
-
-      tabBtns.forEach(b => {
-        const active = b.dataset.tab === target;
-        b.setAttribute('aria-selected', String(active));
-        b.className = b.className
-          .replace(/bg-calma-deep text-text-inverse|bg-warm-stone text-text-muted hover:bg-warm-stone\/70/g, '')
-          .trim();
-        b.classList.add(...(active
-          ? ['bg-calma-deep', 'text-text-inverse']
-          : ['bg-warm-stone', 'text-text-muted', 'hover:bg-warm-stone/70']
-        ));
-      });
-
-      panels.forEach(p => {
-        p.hidden = p.id !== `panel-${target}`;
-      });
-    });
+    btn.addEventListener('click', () => activateTab(btn.dataset.tab!));
   });
 
-  /* Sticky CTA: show while #services is in viewport on mobile */
-  const section  = document.getElementById('services')!;
-  const stickyCta = document.getElementById('services-sticky-cta')!;
-
-  const stickyObs = new IntersectionObserver(entries => {
-    const visible = entries[0].isIntersecting;
-    stickyCta.classList.toggle('translate-y-full', !visible);
-    stickyCta.setAttribute('aria-hidden', String(!visible));
-  }, { threshold: 0.1 });
-
-  stickyObs.observe(section);
+  // Init underline position
+  window.addEventListener('load', () => {
+    const active = document.querySelector<HTMLButtonElement>('.tab.active');
+    if (active) moveUnderline(active);
+  });
+  window.addEventListener('resize', () => {
+    const active = document.querySelector<HTMLButtonElement>('.tab.active');
+    if (active) moveUnderline(active);
+  });
 </script>

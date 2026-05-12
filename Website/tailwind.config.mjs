@@ -18,8 +18,9 @@ export default {
         'wa-green':      '#25D366',
       },
       fontFamily: {
-        display: ['Cormorant Garamond', 'Noto Naskh Arabic', 'serif'],
-        body:    ['Inter', 'IBM Plex Sans Arabic', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body:    ['Manrope', '-apple-system', 'sans-serif'],
+        mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'h1':       'clamp(2.5rem, 6vw, 4.5rem)',

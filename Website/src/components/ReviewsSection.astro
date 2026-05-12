@@ -1,0 +1,49 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+const { t } = Astro.props;
+const r = t.reviews;
+const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu";
+---
+
+<section class="section reviews" style="padding-block: clamp(64px, 9vw, 128px)">
+  <div class="container">
+    <div class="reviews-grid reveal">
+
+      <!-- Score side -->
+      <div class="reviews-score">
+        <div class="number" aria-label={r.score_aria}>4.9</div>
+        <div class="reviews-stars" aria-label={r.stars_aria}>
+          <span>★</span><span>★</span><span>★</span><span>★</span><span class="partial">★</span>
+        </div>
+        <div class="reviews-count">
+          <strong>1,390</strong> {r.count_label}
+        </div>
+      </div>
+
+      <!-- Meta side -->
+      <div class="reviews-meta">
+        <p class="reviews-quote">{r.quote}</p>
+        <div class="reviews-breakdown">
+          <div class="cell">
+            <span class="k">{r.breakdown1_k}</span>
+            <span class="v">5.0<span class="star">★</span></span>
+          </div>
+          <div class="cell">
+            <span class="k">{r.breakdown2_k}</span>
+            <span class="v">5.0<span class="star">★</span></span>
+          </div>
+          <div class="cell">
+            <span class="k">{r.breakdown3_k}</span>
+            <span class="v">4.9<span class="star">★</span></span>
+          </div>
+        </div>
+        <a class="reviews-cta" href={FRESHA_URL} target="_blank" rel="noopener noreferrer">
+          {r.cta} <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

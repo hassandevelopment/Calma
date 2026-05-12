@@ -81,7 +81,7 @@ const b = basePrefix;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
@@ -114,11 +114,11 @@ const b = basePrefix;
       const observer = new IntersectionObserver(
         entries => entries.forEach(e => {
           if (e.isIntersecting) {
-            e.target.classList.add('visible');
+            e.target.classList.add('in');
             observer.unobserve(e.target);
           }
         }),
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0.05, rootMargin: '-40px 0px -40px 0px' }
       );
 
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

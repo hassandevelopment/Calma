@@ -3,104 +3,187 @@
   "dir": "ltr",
 
   "site": {
-    "title": "Calma Men's Massage, Salon & Spa | Al-Seef, Bahrain",
-    "description": "Men's massage, salon & spa in Al-Seef, Bahrain. Spanish-inspired calm, expertly delivered. Book online or WhatsApp us.",
+    "title": "Calma Men's Massage, Salon & Spa | Seef, Bahrain",
+    "description": "Men's massage, salon & spa in Seef, Bahrain. Spanish-inspired calm, expertly delivered. Book online or WhatsApp us.",
     "og_title": "Calma — Find Peace Within",
-    "og_description": "Men's massage, salon & spa in Al-Seef, Bahrain. 4.9★ on Fresha · 1,390+ reviews."
+    "og_description": "Men's massage, salon & spa in Seef, Bahrain. 4.9★ on Fresha · 1,390+ reviews."
   },
 
   "nav": {
-    "experience": "Experience",
+    "experience": "The Space",
+    "signature": "Signature",
     "services": "Services",
     "team": "Team",
     "visit": "Visit",
-    "book_now": "Book Now",
+    "book_now": "Book on Fresha",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
     "lang_toggle": "عربي"
   },
 
   "hero": {
-    "headline": "Find Peace Within.",
-    "sub": "Men's massage, salon & spa in Seef. Spanish-inspired calm, expertly delivered.",
-    "cta_book": "Book on Fresha",
-    "cta_whatsapp": "WhatsApp Us",
-    "trust": "4.9★ · 1,390+ reviews · Open until midnight"
+    "eyebrow": "Seef · Bahrain · Est. 2024",
+    "ar_headline": "صفاء واسترخاء",
+    "headline_line1": "Find",
+    "headline_italic": "peace",
+    "headline_line2": "within.",
+    "sub": "A men-only sanctuary for massage, salon and spa. Spanish-inspired calm, expertly delivered, kept open until midnight.",
+    "book_cta": "Book on Fresha →",
+    "whatsapp_cta": "WhatsApp us",
+    "trust_rating": "4.9 · 1,390 reviews",
+    "trust_hours": "Open daily · until midnight",
+    "image_alt": "Calma treatment room, copper-sculpture ceiling",
+    "arrival_label": "At a glance",
+    "arrival_eyebrow": "Today · open now",
+    "arrival_salon_label": "Salon",
+    "arrival_salon_hours": "10 — 22",
+    "arrival_spa_label": "Spa & Massage",
+    "arrival_spa_hours": "10 — 24",
+    "arrival_walkin_label": "Walk-in tonight",
+    "arrival_walkin_value": "Available"
   },
 
-  "experience": {
-    "eyebrow": "The Space",
-    "headline": "A Men's Sanctuary",
-    "body": "Calma is men-only. Warm stone, walnut wood, amber light kept low. The therapists trained in Spanish massage tradition. You come in tight. You leave lighter."
+  "ribbon": {
+    "items": ["Find Peace Within", "صفاء واسترخاء", "Men's Sanctuary", "Seef · Bahrain", "Spanish-Inspired", "Open Until Midnight"]
   },
 
-  "services": {
-    "eyebrow": "What We Offer",
-    "headline": "Our Services",
-    "tab_massage": "Massage",
-    "tab_spa": "Spa",
-    "tab_salon": "Salon",
-    "col_service": "Service",
-    "col_duration": "Duration",
-    "col_price": "Price",
-    "min": "min",
-    "bhd": "BD",
-    "from": "From",
-    "book_row": "Book",
-    "sticky_book": "Book Now",
-    "sticky_whatsapp": "WhatsApp"
+  "space": {
+    "head_line1": "A men's",
+    "head_italic": "sanctuary,",
+    "head_line2": "in the heart of Seef.",
+    "eyebrow": "The Space · 01",
+    "lead": "Warm stone, walnut wood, low amber light. The therapists trained in the Spanish tradition — slow, deliberate, unhurried. You arrive carrying the day. You leave lighter.",
+    "photo_alt": "Calma salon with cream barber chairs and arched mirrors",
+    "copy_line1": "Built around",
+    "copy_italic": "stillness.",
+    "copy_lead": "Three treatment rooms, a copper-ceiling massage suite, a hammam for Moroccan bath, and a five-chair barber salon — all under one quiet roof.",
+    "spec1_k": "Treatment Rooms",
+    "spec1_v": "Three private",
+    "spec2_k": "Hammam",
+    "spec2_v": "Moroccan bath",
+    "spec3_k": "Salon Chairs",
+    "spec3_v": "Five stations",
+    "spec4_k": "Hours",
+    "spec4_v": "Until midnight",
+    "menu_cta": "See the full menu"
+  },
+
+  "gallery": {
+    "head_line1": "Inside the",
+    "head_italic": "sanctuary.",
+    "eyebrow": "The Rooms · 02",
+    "lead": "Six rooms under one quiet roof — a hammam, three treatment suites, a five-chair salon, and a vanity for facials. Built to be heard as little as possible.",
+    "tile1_label": "The Hammam",
+    "tile1_meta": "Moroccan bath",
+    "tile2_label": "Treatment Suite",
+    "tile2_meta": "Private · No. 2",
+    "tile3_label": "Massage Room",
+    "tile3_meta": "Evening rates",
+    "tile4_label": "Quiet Cabin",
+    "tile4_meta": "Solo recovery"
   },
 
   "signature": {
-    "eyebrow": "Signature Treatments",
-    "headline": "Go Deeper",
-    "learn_more": "See in services",
-    "cupping": {
-      "name": "Dry Cupping",
-      "benefit": "Release deep muscle tension and improve circulation through traditional cupping therapy."
-    },
-    "recovery": {
-      "name": "Sport Recovery Massage",
-      "benefit": "Deep-tissue massage focused on legs, shoulders, and lower back. Built for men who train hard."
-    },
-    "facial": {
-      "name": "Thalgo Marine Facial",
-      "benefit": "Thalgo's French marine formulas applied by trained hands. Clean pores, better texture in 45 minutes."
-    }
+    "head_line1": "Three signatures,",
+    "head_italic": "go deeper.",
+    "eyebrow": "Signature · 02",
+    "lead": "What men ask for most often, and what we do best. Each one bookable on its own, or built into a longer session.",
+    "card1_en": "Dry Cupping",
+    "card1_ar": "الحجامة الجافة",
+    "card1_blurb": "Traditional cupping draws blood to the surface, releasing deep muscle tension and improving circulation.",
+    "card1_duration": "30 min",
+    "card1_price": "BD 13.2",
+    "card2_en": "Sport Recovery",
+    "card2_ar": "المساج الرياضي",
+    "card2_blurb": "Deep-tissue work focused on legs, shoulders and lower back. Built for men who train hard.",
+    "card2_duration": "60 / 90 min",
+    "card2_price": "BD 22",
+    "card3_en": "Thalgo Marine Facial",
+    "card3_ar": "تالغو البحرية",
+    "card3_blurb": "French marine formulas, applied by trained hands. Cleaner pores, better texture in 45 minutes.",
+    "card3_duration": "45 min",
+    "card3_price": "BD 11"
   },
 
-  "team": {
-    "eyebrow": "The Team",
-    "headline": "Expert Hands",
-    "body": "Our barbers and therapists bring precision and care to every session.",
-    "see_all": "See full team on Fresha",
-    "rating_label": "★"
+  "services_section": {
+    "head_line1": "The full",
+    "head_italic": "menu.",
+    "eyebrow": "Services · 03",
+    "lead": "Thirty treatments across massage, spa and salon — every price in BHD, every duration transparent. Tap a row to book the slot you want.",
+    "tab_massage": "Massage",
+    "tab_spa": "Spa",
+    "tab_salon": "Salon",
+    "price_note": "All prices BHD · incl. VAT",
+    "bottom_note": "Bookable on Fresha. Walk-ins welcome — we'll fit you in around the schedule. For group bookings or vouchers, message us directly.",
+    "book_cta": "Book on Fresha →"
+  },
+
+  "reviews": {
+    "score_aria": "Rating: 4.9 out of 5",
+    "stars_aria": "4.9 out of 5 stars",
+    "count_label": "reviews on Fresha",
+    "quote": "Trusted enough that men cross town for it — and quiet enough that they keep coming back.",
+    "breakdown1_k": "Service",
+    "breakdown2_k": "Cleanliness",
+    "breakdown3_k": "Value",
+    "cta": "Read every review on Fresha"
+  },
+
+  "thalgo": {
+    "eyebrow": "In Partnership With",
+    "headline": "French marine, applied by trained hands.",
+    "copy": "Calma facials use Thalgo formulas — the same line you'd find in spa-hotels along the Côte d'Azur. The products are quietly stocked at reception for guests who ask.",
+    "partners_aria": "Brand partners"
+  },
+
+  "team_section": {
+    "head_line1": "Expert",
+    "head_italic": "hands.",
+    "eyebrow": "The Team · 04",
+    "lead": "Eight barbers and therapists, each with their own following on Fresha. Pick the one you trust, or let us match you to a free slot.",
+    "fresha_cta": "See full team on Fresha"
   },
 
   "visit": {
-    "eyebrow": "Find Us",
-    "headline": "Visit Calma",
-    "hours_title": "Opening Hours",
-    "salon_label": "Salon",
-    "salon_hours": "10:00 AM – 10:00 PM, daily",
-    "spa_label": "Massage & Spa",
-    "spa_hours": "10:00 AM – 12:00 AM (midnight), daily",
-    "address_title": "Address",
-    "address": "Building 2131, Road 3640, Al-Seef 436, Bahrain",
-    "directions": "Get Directions",
-    "whatsapp_chat": "Chat on WhatsApp",
-    "amenities_title": "Amenities",
-    "amenities": ["Wheelchair accessible", "Parking available", "Showers", "Lockers", "Bath towels"]
+    "head_line1": "Plan your",
+    "head_italic": "visit.",
+    "eyebrow": "Find Us · 05",
+    "lead": "Building 2131, Road 3640, Seef. Three minutes from City Centre Bahrain. Wheelchair accessible, parking outside the door.",
+    "row1_k": "Salon",
+    "row1_v": "10:00 AM — 10:00 PM",
+    "row1_sub": "Daily",
+    "row2_k": "Spa & Massage",
+    "row2_v": "10:00 AM — 12:00 AM",
+    "row2_sub": "Open until midnight, daily",
+    "row3_k": "Address",
+    "row3_v": "Building 2131, Road 3640",
+    "row3_sub": "Seef 436 · Bahrain",
+    "row4_k": "WhatsApp",
+    "row4_v": "+973 6667 7745",
+    "row4_sub": "Live · usually under 5 min",
+    "directions_cta": "Get directions →",
+    "whatsapp_cta": "Chat on WhatsApp",
+    "amenities_aria": "Amenities",
+    "amenities": ["Wheelchair accessible", "Parking", "Showers", "Lockers", "Bath towels", "Robes"]
   },
 
   "footer": {
-    "tagline": "Find Peace Within",
-    "links_title": "Quick Links",
-    "connect_title": "Connect",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp",
-    "fresha": "Book on Fresha",
-    "copyright": "© 2026 Calma Massage & Spa. All rights reserved.",
+    "tagline": "Find peace within.",
+    "col_visit": "Visit",
+    "col_connect": "Connect",
+    "col_hours": "Hours",
+    "link_space": "The Space",
+    "link_signature": "Signature",
+    "link_services": "Services",
+    "link_visit": "Find us",
+    "link_instagram": "Instagram",
+    "link_whatsapp": "WhatsApp",
+    "link_fresha": "Fresha",
+    "hours_salon": "Salon · 10 — 22",
+    "hours_spa": "Spa · 10 — 24",
+    "hours_daily": "Daily",
+    "copyright": "© 2026 Calma Massage & Spa",
+    "location": "Seef · Bahrain",
     "privacy": "Privacy Policy",
     "skip_to_content": "Skip to content"
   },

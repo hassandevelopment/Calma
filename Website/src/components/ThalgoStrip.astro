@@ -1,0 +1,20 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+const { t } = Astro.props;
+const tg = t.thalgo;
+---
+
+<section class="thalgo">
+  <div class="container">
+    <span class="eyebrow reveal">{tg.eyebrow}</span>
+    <p class="h3 reveal">{tg.headline}</p>
+    <p class="copy reveal">{tg.copy}</p>
+    <div class="partners reveal" aria-label={tg.partners_aria}>
+      <span>THALGO</span>
+      <span>·</span>
+      <span>iBEAUTY PRO</span>
+    </div>
+  </div>
+</section>

@@ -7,62 +7,41 @@ interface Props {
 }
 
 const { t, lang } = Astro.props;
-const tt = t.team;
-
-const FRESHA_URL = 'https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu';
+const tm = t.team_section;
+const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu";
 ---
 
-<section id="team" class="bg-warm-cream section-wrap">
-  <div class="content-wrap">
+<section class="section" style="background: var(--warm-cream)">
+  <div class="container">
 
-    <div class="text-center mb-12 reveal">
-      <div class="inline-flex items-center gap-3 mb-4">
-        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
-        <p class="eyebrow">{tt.eyebrow}</p>
-        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
+    <div class="section-head reveal">
+      <h2 class="h2">
+        {tm.head_line1} <span class="italic">{tm.head_italic}</span>
+      </h2>
+      <div class="meta">
+        <span class="eyebrow">{tm.eyebrow}</span>
+        <p class="lead">{tm.lead}</p>
       </div>
-      <h2 class="section-headline font-display text-text-primary font-medium leading-display mb-4">{tt.headline}</h2>
-      <p class="font-body text-body text-text-muted mx-auto">{tt.body}</p>
     </div>
 
-    <!-- Team grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">
-      {team.map((member, i) => (
-        <div
-          class="flex flex-col items-center text-center p-5 rounded-card bg-warm-stone/40 hover:bg-warm-stone/80 hover:-translate-y-1 hover:shadow-card transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] reveal"
-          style={`transition-delay: ${i * 60}ms`}
-        >
-          <!-- Avatar placeholder — initials -->
-          <div
-            class="w-14 h-14 rounded-full bg-calma-deep flex items-center justify-center text-text-inverse font-display font-medium text-lg mb-3"
-            aria-hidden="true"
-          >
-            {member.name.charAt(0)}
+    <div class="team-grid">
+      {team.map((member: any) => (
+        <div class="team-card reveal">
+          <div class="team-photo">
+            <div class="placeholder" aria-hidden="true">{member.name[0]}</div>
           </div>
-
-          <p class="font-body font-semibold text-text-primary text-[0.95rem] mb-0.5">{member.name}</p>
-          <p class="font-body text-small text-text-muted mb-1.5">
-            {lang === 'ar' ? member.role_ar : member.role_en}
-          </p>
-          <p class="font-body text-small text-gold-accent">
-            {tt.rating_label} {member.rating.toFixed(1)}
-          </p>
+          <p class="name">{member.name}</p>
+          <span class="role">
+            {lang === 'ar' ? member.role_ar ?? member.role : member.role}
+            {' · '}<span class="rating">★ {member.rating}</span>
+          </span>
         </div>
       ))}
     </div>
 
-    <!-- See full team -->
-    <div class="text-center reveal">
-      <a
-        href={FRESHA_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 font-body font-semibold text-small text-calma-mid hover:text-calma-deep transition-colors duration-200 underline underline-offset-4"
-      >
-        {tt.see_all}
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-directional" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+    <div style="margin-top: 40px">
+      <a class="btn-ghost" href={FRESHA_URL} target="_blank" rel="noopener noreferrer">
+        {tm.fresha_cta} <span class="arrow">→</span>
       </a>
     </div>
 

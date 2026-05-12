@@ -1,10 +1,10 @@
 [
-  { "name": "Sofien",    "role_en": "Barber",     "role_ar": "حلاق",    "rating": 5.0 },
-  { "name": "Med Amine", "role_en": "Barber",     "role_ar": "حلاق",    "rating": 5.0 },
-  { "name": "Aymen",     "role_en": "Barber",     "role_ar": "حلاق",    "rating": 5.0 },
-  { "name": "Eugene",    "role_en": "Therapist",  "role_ar": "معالج",   "rating": 4.9 },
-  { "name": "Mikel",     "role_en": "Therapist",  "role_ar": "معالج",   "rating": 4.9 },
-  { "name": "Nheil",     "role_en": "Therapist",  "role_ar": "معالج",   "rating": 4.8 },
-  { "name": "Bon",       "role_en": "Therapist",  "role_ar": "معالج",   "rating": 4.8 },
-  { "name": "Nasief",    "role_en": "Therapist",  "role_ar": "معالج",   "rating": 4.8 }
+  { "name": "Sofien",    "role": "Barber",    "role_ar": "حلاق",    "rating": "5.0" },
+  { "name": "Med Amine", "role": "Barber",    "role_ar": "حلاق",    "rating": "5.0" },
+  { "name": "Aymen",     "role": "Barber",    "role_ar": "حلاق",    "rating": "5.0" },
+  { "name": "Eugene",    "role": "Therapist", "role_ar": "معالج",   "rating": "4.9" },
+  { "name": "Mikel",     "role": "Therapist", "role_ar": "معالج",   "rating": "4.9" },
+  { "name": "Nheil",     "role": "Therapist", "role_ar": "معالج",   "rating": "4.8" },
+  { "name": "Bon",       "role": "Therapist", "role_ar": "معالج",   "rating": "4.8" },
+  { "name": "Nasief",    "role": "Therapist", "role_ar": "معالج",   "rating": "4.8" }
 ]

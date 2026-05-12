@@ -1,0 +1,64 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+const { t } = Astro.props;
+const s = t.space;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<section id="space" class="section space">
+  <div class="container">
+
+    <!-- Section head: 2-col on desktop -->
+    <div class="section-head reveal">
+      <h2 class="h2">
+        {s.head_line1} <span class="italic">{s.head_italic}</span><br/>{s.head_line2}
+      </h2>
+      <div class="meta">
+        <span class="eyebrow">{s.eyebrow}</span>
+        <p class="lead">{s.lead}</p>
+      </div>
+    </div>
+
+    <!-- Space grid: photo + copy -->
+    <div class="space-grid">
+      <div class="space-photo reveal">
+        <img
+          src={`${base}/images/venue-salon.jpg`}
+          alt={s.photo_alt}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="space-copy reveal">
+        <h2>
+          {s.copy_line1} <span class="italic">{s.copy_italic}</span>
+        </h2>
+        <p class="lead">{s.copy_lead}</p>
+        <div class="space-spec">
+          <div class="cell">
+            <div class="k">{s.spec1_k}</div>
+            <div class="v">{s.spec1_v}</div>
+          </div>
+          <div class="cell">
+            <div class="k">{s.spec2_k}</div>
+            <div class="v">{s.spec2_v}</div>
+          </div>
+          <div class="cell">
+            <div class="k">{s.spec3_k}</div>
+            <div class="v">{s.spec3_v}</div>
+          </div>
+          <div class="cell">
+            <div class="k">{s.spec4_k}</div>
+            <div class="v">{s.spec4_v}</div>
+          </div>
+        </div>
+        <a class="btn-ghost" href="#services">
+          {s.menu_cta} <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

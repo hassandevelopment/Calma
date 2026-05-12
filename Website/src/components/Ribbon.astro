@@ -1,0 +1,14 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+const { t } = Astro.props;
+const items = t.ribbon.items as string[];
+const loop = [...items, ...items];
+---
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    {loop.map((item: string) => <span>{item}</span>)}
+  </div>
+</div>

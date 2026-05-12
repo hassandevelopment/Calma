@@ -1,5 +1,4 @@
 ---
-import BookButton from './BookButton.astro';
 import LanguageToggle from './LanguageToggle.astro';
 
 interface Props {
@@ -10,69 +9,54 @@ interface Props {
 
 const { t, lang, currentPath } = Astro.props;
 const nav = t.nav;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu";
 ---
 
-<header id="site-header" class="fixed inset-block-start-0 inset-inline-start-0 inset-inline-end-0 z-50 transition-all duration-300">
-  <div class="content-wrap px-5 md:px-8">
-    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 h-16 md:h-20">
+<header id="site-header" class="header">
+  <div class="container header-inner">
 
-      <!-- Logo -->
-      <a href={lang === 'ar' ? '/ar' : '/'} aria-label={t.aria.logo} class="justify-self-start">
-        <img
-          src={`${base}/calma-logo.svg`}
-          alt="Calma"
-          width="44"
-          height="44"
-          class="w-11 h-11 rounded-full"
-        />
-      </a>
+    <!-- Brand -->
+    <a href={lang === 'ar' ? '/ar' : '/'} class="brand" aria-label={t.aria.logo}>
+      <span>CALMA</span>
+      <span class="dot" aria-hidden="true"></span>
+    </a>
 
-      <!-- Desktop nav (auto-width center column) -->
-      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-6">
-        {[
-          { key: 'experience', href: '#experience' },
-          { key: 'services',   href: '#services' },
-          { key: 'team',       href: '#team' },
-          { key: 'visit',      href: '#visit' },
-        ].map(({ key, href }) => (
-          <a
-            href={href}
-            class="nav-link font-body font-medium text-small tracking-wide opacity-80 hover:opacity-100 transition-opacity duration-200 relative after:absolute after:inset-block-end-[-2px] after:inset-inline-start-0 after:w-0 after:h-px after:bg-current after:transition-[width] after:duration-300 hover:after:w-full"
-          >
-            {nav[key]}
-          </a>
-        ))}
-      </nav>
+    <!-- Desktop nav -->
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="#space">{nav.experience}</a>
+      <a href="#signature">{nav.signature}</a>
+      <a href="#services">{nav.services}</a>
+      <a href="#visit">{nav.visit}</a>
+    </nav>
 
-      <!-- Right actions -->
-      <div class="flex items-center justify-end gap-3">
-        <LanguageToggle
-          currentLang={lang}
-          currentPath={currentPath}
-          label={nav.lang_toggle}
-          ariaLabel={t.aria.lang_toggle}
-        />
-        <BookButton
-          label={nav.book_now}
-          variant="filled"
-          class="hidden sm:inline-flex text-xs px-4 py-2"
-          ariaLabel={t.aria.book_fresha}
-        />
-        <!-- Mobile hamburger -->
-        <button
-          id="hamburger"
-          type="button"
-          aria-label={nav.open_menu}
-          aria-expanded="false"
-          aria-controls="mobile-drawer"
-          class="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-10 p-2"
-        >
-          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300 origin-center"></span>
-          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300"></span>
-          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300 origin-center"></span>
-        </button>
-      </div>
+    <!-- Right actions -->
+    <div class="header-cta">
+      <LanguageToggle
+        currentLang={lang}
+        currentPath={currentPath}
+        label={nav.lang_toggle}
+        ariaLabel={t.aria.lang_toggle}
+      />
+      <a
+        href={FRESHA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-filled hidden-mobile"
+        aria-label={t.aria.book_fresha}
+      >{nav.book_now}</a>
+      <!-- Mobile hamburger -->
+      <button
+        id="hamburger"
+        type="button"
+        aria-label={nav.open_menu}
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+        class="hamburger-btn"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
   </div>
 </header>
@@ -83,84 +67,147 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   role="dialog"
   aria-modal="true"
   aria-label={nav.open_menu}
-  class="fixed inset-0 z-40 flex flex-col justify-center items-center bg-calma-deep text-text-inverse translate-x-full [dir=rtl]:translate-x-[-100%] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden"
+  class="mobile-drawer"
 >
-  <nav class="flex flex-col items-center gap-8 text-center" aria-label="Mobile navigation">
-    {[
-      { key: 'experience', href: '#experience' },
-      { key: 'services',   href: '#services' },
-      { key: 'team',       href: '#team' },
-      { key: 'visit',      href: '#visit' },
-    ].map(({ key, href }) => (
-      <a
-        href={href}
-        class="drawer-link font-display text-h3 font-medium hover:text-calma-soft transition-colors duration-200"
-        data-close-drawer
-      >
-        {nav[key]}
-      </a>
-    ))}
+  <nav class="drawer-nav" aria-label="Mobile navigation">
+    <a href="#space" data-close-drawer>{nav.experience}</a>
+    <a href="#signature" data-close-drawer>{nav.signature}</a>
+    <a href="#services" data-close-drawer>{nav.services}</a>
+    <a href="#visit" data-close-drawer>{nav.visit}</a>
   </nav>
-  <div class="mt-12 flex flex-col items-center gap-4">
-    <BookButton label={nav.book_now} variant="outlined" ariaLabel={t.aria.book_fresha} />
+  <div class="drawer-ctas">
+    <a
+      href={FRESHA_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-filled"
+      data-close-drawer
+    >{nav.book_now}</a>
   </div>
 </div>
+
+<style>
+  .hidden-mobile {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .hidden-mobile { display: inline-flex; }
+  }
+
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+  }
+  @media (min-width: 900px) {
+    .hamburger-btn { display: none; }
+  }
+
+  .hamburger-line {
+    display: block;
+    height: 1px;
+    width: 24px;
+    background: currentColor;
+    transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center;
+  }
+
+  /* Mobile drawer */
+  .mobile-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--calma-deep);
+    color: var(--warm-cream);
+    transform: translateX(100%);
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [dir="rtl"] .mobile-drawer {
+    transform: translateX(-100%);
+  }
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+  .drawer-nav a {
+    font-family: var(--ff-display);
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 400;
+    color: var(--warm-cream);
+    opacity: 0.85;
+    transition: opacity 200ms;
+  }
+  .drawer-nav a:hover { opacity: 1; }
+
+  .drawer-ctas {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+</style>
 
 <script>
   const header    = document.getElementById('site-header')!;
   const hamburger = document.getElementById('hamburger')!;
   const drawer    = document.getElementById('mobile-drawer')!;
-  const lines     = hamburger.querySelectorAll('.hamburger-line');
+  const lines     = hamburger.querySelectorAll<HTMLElement>('.hamburger-line');
 
-  /* Sticky: add backdrop blur + bg after scrolling past hero */
+  /* Sticky backdrop once past hero */
   const onScroll = () => {
     const past = window.scrollY > 60;
-    header.classList.toggle('bg-warm-cream/90', past);
-    header.classList.toggle('backdrop-blur-nav', past);
-    header.classList.toggle('border-b', past);
-    header.classList.toggle('border-warm-stone', past);
-    header.classList.toggle('shadow-[0_1px_0_rgba(61,92,92,0.08)]', past);
-    /* Text color: dark when scrolled (on cream bg), inverse on hero */
-    header.classList.toggle('text-text-primary', past);
-    header.classList.toggle('text-text-inverse', !past);
+    header.classList.toggle('scrolled', past);
   };
-
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Hamburger toggle */
+  /* Drawer open/close */
   const openDrawer = () => {
-    drawer.classList.remove('translate-x-full', '[dir=rtl]:translate-x-[-100%]');
-    drawer.classList.add('translate-x-0');
+    drawer.classList.add('open');
     hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.setAttribute('aria-label', hamburger.dataset.closeLabel ?? 'Close menu');
     document.body.style.overflow = 'hidden';
-    /* Animate to ✕ */
-    lines[0].classList.add('translate-y-[6px]', 'rotate-45');
-    lines[1].classList.add('opacity-0');
-    lines[2].classList.add('-translate-y-[6px]', '-rotate-45');
+    lines[0].style.transform = 'translateY(6px) rotate(45deg)';
+    lines[1].style.opacity = '0';
+    lines[2].style.transform = 'translateY(-6px) rotate(-45deg)';
   };
 
   const closeDrawer = () => {
-    drawer.classList.add('translate-x-full');
-    drawer.classList.remove('translate-x-0');
+    drawer.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
-    lines[0].classList.remove('translate-y-[6px]', 'rotate-45');
-    lines[1].classList.remove('opacity-0');
-    lines[2].classList.remove('-translate-y-[6px]', '-rotate-45');
+    lines[0].style.transform = '';
+    lines[1].style.opacity = '';
+    lines[2].style.transform = '';
   };
 
   hamburger.addEventListener('click', () => {
-    drawer.getAttribute('aria-expanded') === 'true' ? closeDrawer() : openDrawer();
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
-  /* Close on nav link click */
   drawer.querySelectorAll('[data-close-drawer]').forEach(el =>
     el.addEventListener('click', closeDrawer)
   );
 
-  /* Close on Escape */
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeDrawer();
   });
