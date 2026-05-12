@@ -16,8 +16,12 @@ const v = t.visit;
   <div class="content-wrap">
 
     <div class="text-center mb-12 reveal">
-      <p class="eyebrow text-text-inverse/60 mb-3">{v.eyebrow}</p>
-      <h2 class="font-display text-h2 text-text-inverse font-medium leading-display">{v.headline}</h2>
+      <div class="inline-flex items-center gap-3 mb-4">
+        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
+        <p class="eyebrow text-text-inverse/60">{v.eyebrow}</p>
+        <span class="block h-px w-8 bg-gold-accent/50" aria-hidden="true"></span>
+      </div>
+      <h2 class="section-headline font-display text-text-inverse font-medium leading-display">{v.headline}</h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">

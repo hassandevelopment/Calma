@@ -22,7 +22,7 @@
 
   "hero": {
     "headline": "Find Peace Within.",
-    "sub": "Men's massage, salon & spa in Al-Seef. Spanish-inspired calm, expertly delivered.",
+    "sub": "Men's massage, salon & spa in Seef. Spanish-inspired calm, expertly delivered.",
     "cta_book": "Book on Fresha",
     "cta_whatsapp": "WhatsApp Us",
     "trust": "4.9★ · 1,390+ reviews · Open until midnight"
@@ -31,7 +31,7 @@
   "experience": {
     "eyebrow": "The Space",
     "headline": "A Men's Sanctuary",
-    "body": "Calma is a men-only wellness retreat in the heart of Al-Seef. Inspired by the unhurried ease of Spanish spa culture — warm stone, walnut wood, soft amber light. Every detail is designed to help you arrive, slow down, and leave restored."
+    "body": "Calma is men-only. Warm stone, walnut wood, amber light kept low. The therapists trained in Spanish massage tradition. You come in tight. You leave lighter."
   },
 
   "services": {
@@ -61,11 +61,11 @@
     },
     "recovery": {
       "name": "Sport Recovery Massage",
-      "benefit": "Targeted deep-tissue work built for athletes and active men. Recover faster, perform better."
+      "benefit": "Deep-tissue massage focused on legs, shoulders, and lower back. Built for men who train hard."
     },
     "facial": {
       "name": "Thalgo Marine Facial",
-      "benefit": "French marine science meets expert hands. Deep cleanse, renewed skin in 45 minutes."
+      "benefit": "Thalgo's French marine formulas applied by trained hands. Clean pores, better texture in 45 minutes."
     }
   },
 
