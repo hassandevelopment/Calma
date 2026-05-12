@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="500" cy="500" r="420" fill="#3F6663"/>
+
+  <text x="500" y="430"
+        font-family="Arial, sans-serif"
+        font-size="170"
+        fill="#F2EEE8"
+        text-anchor="middle"
+        direction="rtl">كالما</text>
+
+  <text x="500" y="610"
+        font-family="Times New Roman, serif"
+        font-size="120"
+        letter-spacing="4"
+        fill="#F2EEE8"
+        text-anchor="middle">CALMA</text>
+</svg>

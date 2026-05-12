@@ -1,0 +1,120 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+
+  "site": {
+    "title": "Calma Men's Massage, Salon & Spa | Al-Seef, Bahrain",
+    "description": "Men's massage, salon & spa in Al-Seef, Bahrain. Spanish-inspired calm, expertly delivered. Book online or WhatsApp us.",
+    "og_title": "Calma — Find Peace Within",
+    "og_description": "Men's massage, salon & spa in Al-Seef, Bahrain. 4.9★ on Fresha · 1,390+ reviews."
+  },
+
+  "nav": {
+    "experience": "Experience",
+    "services": "Services",
+    "team": "Team",
+    "visit": "Visit",
+    "book_now": "Book Now",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "lang_toggle": "عربي"
+  },
+
+  "hero": {
+    "headline": "Find Peace Within.",
+    "sub": "Men's massage, salon & spa in Al-Seef. Spanish-inspired calm, expertly delivered.",
+    "cta_book": "Book on Fresha",
+    "cta_whatsapp": "WhatsApp Us",
+    "trust": "4.9★ · 1,390+ reviews · Open until midnight"
+  },
+
+  "experience": {
+    "eyebrow": "The Space",
+    "headline": "A Men's Sanctuary",
+    "body": "Calma is a men-only wellness retreat in the heart of Al-Seef. Inspired by the unhurried ease of Spanish spa culture — warm stone, walnut wood, soft amber light. Every detail is designed to help you arrive, slow down, and leave restored."
+  },
+
+  "services": {
+    "eyebrow": "What We Offer",
+    "headline": "Our Services",
+    "tab_massage": "Massage",
+    "tab_spa": "Spa",
+    "tab_salon": "Salon",
+    "col_service": "Service",
+    "col_duration": "Duration",
+    "col_price": "Price",
+    "min": "min",
+    "bhd": "BD",
+    "from": "From",
+    "book_row": "Book",
+    "sticky_book": "Book Now",
+    "sticky_whatsapp": "WhatsApp"
+  },
+
+  "signature": {
+    "eyebrow": "Signature Treatments",
+    "headline": "Go Deeper",
+    "learn_more": "See in services",
+    "cupping": {
+      "name": "Dry Cupping",
+      "benefit": "Release deep muscle tension and improve circulation through traditional cupping therapy."
+    },
+    "recovery": {
+      "name": "Sport Recovery Massage",
+      "benefit": "Targeted deep-tissue work built for athletes and active men. Recover faster, perform better."
+    },
+    "facial": {
+      "name": "Thalgo Marine Facial",
+      "benefit": "French marine science meets expert hands. Deep cleanse, renewed skin in 45 minutes."
+    }
+  },
+
+  "team": {
+    "eyebrow": "The Team",
+    "headline": "Expert Hands",
+    "body": "Our barbers and therapists bring precision and care to every session.",
+    "see_all": "See full team on Fresha",
+    "rating_label": "★"
+  },
+
+  "visit": {
+    "eyebrow": "Find Us",
+    "headline": "Visit Calma",
+    "hours_title": "Opening Hours",
+    "salon_label": "Salon",
+    "salon_hours": "10:00 AM – 10:00 PM, daily",
+    "spa_label": "Massage & Spa",
+    "spa_hours": "10:00 AM – 12:00 AM (midnight), daily",
+    "address_title": "Address",
+    "address": "Building 2131, Road 3640, Al-Seef 436, Bahrain",
+    "directions": "Get Directions",
+    "whatsapp_chat": "Chat on WhatsApp",
+    "amenities_title": "Amenities",
+    "amenities": ["Wheelchair accessible", "Parking available", "Showers", "Lockers", "Bath towels"]
+  },
+
+  "footer": {
+    "tagline": "Find Peace Within",
+    "links_title": "Quick Links",
+    "connect_title": "Connect",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "fresha": "Book on Fresha",
+    "copyright": "© 2026 Calma Massage & Spa. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "skip_to_content": "Skip to content"
+  },
+
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "How Calma collects and uses your information."
+  },
+
+  "aria": {
+    "logo": "Calma — go to homepage",
+    "lang_toggle": "Switch to Arabic",
+    "book_fresha": "Book on Fresha — opens in new tab",
+    "whatsapp": "Chat on WhatsApp — opens in new tab",
+    "map": "Calma location on Google Maps"
+  }
+}

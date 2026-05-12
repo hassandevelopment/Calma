@@ -1,0 +1,27 @@
+---
+interface Props {
+  currentLang: 'en' | 'ar';
+  currentPath: string;
+  label: string;
+  ariaLabel: string;
+}
+
+const { currentLang, currentPath, label, ariaLabel } = Astro.props;
+
+/* Swap locale in URL: /ar/... → /... and vice versa */
+const targetHref = currentLang === 'en'
+  ? `/ar${currentPath === '/' ? '' : currentPath}`
+  : currentPath.replace(/^\/ar/, '') || '/';
+
+const targetLang = currentLang === 'en' ? 'ar' : 'en';
+---
+
+<a
+  href={targetHref}
+  hreflang={targetLang}
+  lang={targetLang}
+  aria-label={ariaLabel}
+  class="inline-flex items-center px-3 py-1.5 rounded-btn border border-current text-small font-semibold font-body tracking-wide opacity-80 hover:opacity-100 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-3"
+>
+  {label}
+</a>

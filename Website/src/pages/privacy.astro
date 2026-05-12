@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import en from '../i18n/en.json';
+---
+
+<BaseLayout t={en} lang="en" title={en.privacy.title} description={en.privacy.description}>
+  <div class="section-wrap">
+    <div class="content-wrap max-w-reading mx-auto">
+      <h1 class="font-display text-h2 text-text-primary font-medium mb-8">{en.privacy.title}</h1>
+      <div class="prose font-body text-text-muted leading-body space-y-6">
+        <p>This privacy policy explains how Calma Men's Massage, Salon & Spa ("Calma", "we", "our") collects and uses information when you visit calma.bh.</p>
+        <h2 class="font-display text-h3 text-text-primary">Information we collect</h2>
+        <p>This website does not use cookies for tracking. We use privacy-friendly analytics (Cloudflare Web Analytics) which does not collect personally identifiable information, does not store cookies, and does not track you across sites.</p>
+        <h2 class="font-display text-h3 text-text-primary">Third-party services</h2>
+        <p>This site links to Fresha for bookings and WhatsApp for direct messaging. Please review <a href="https://www.fresha.com/privacy-policy" class="text-calma-mid underline underline-offset-2">Fresha's privacy policy</a> and <a href="https://www.whatsapp.com/legal/privacy-policy" class="text-calma-mid underline underline-offset-2">WhatsApp's privacy policy</a> for how those services handle your data.</p>
+        <h2 class="font-display text-h3 text-text-primary">Google Maps</h2>
+        <p>The Visit section includes an embedded Google Maps iframe loaded only when you interact with it. Google's <a href="https://policies.google.com/privacy" class="text-calma-mid underline underline-offset-2">privacy policy</a> applies to that service.</p>
+        <h2 class="font-display text-h3 text-text-primary">Contact</h2>
+        <p>For any privacy questions, contact us via <a href="https://wa.me/97366677745" class="text-calma-mid underline underline-offset-2">WhatsApp</a>.</p>
+        <p class="text-small text-text-muted/60">Last updated: May 2026</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

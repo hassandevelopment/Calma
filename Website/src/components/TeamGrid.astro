@@ -1,0 +1,66 @@
+---
+import team from '../data/team.json';
+
+interface Props {
+  t: Record<string, any>;
+  lang: 'en' | 'ar';
+}
+
+const { t, lang } = Astro.props;
+const tt = t.team;
+
+const FRESHA_URL = 'https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu';
+---
+
+<section id="team" class="bg-warm-cream section-wrap">
+  <div class="content-wrap">
+
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow mb-3">{tt.eyebrow}</p>
+      <h2 class="font-display text-h2 text-text-primary font-medium leading-display mb-4">{tt.headline}</h2>
+      <p class="font-body text-body text-text-muted mx-auto">{tt.body}</p>
+    </div>
+
+    <!-- Team grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">
+      {team.map((member, i) => (
+        <div
+          class="flex flex-col items-center text-center p-5 rounded-card bg-warm-stone/40 hover:bg-warm-stone/80 hover:-translate-y-1 hover:shadow-card transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] reveal"
+          style={`transition-delay: ${i * 60}ms`}
+        >
+          <!-- Avatar placeholder — initials -->
+          <div
+            class="w-14 h-14 rounded-full bg-calma-deep flex items-center justify-center text-text-inverse font-display font-medium text-lg mb-3"
+            aria-hidden="true"
+          >
+            {member.name.charAt(0)}
+          </div>
+
+          <p class="font-body font-semibold text-text-primary text-[0.95rem] mb-0.5">{member.name}</p>
+          <p class="font-body text-small text-text-muted mb-1.5">
+            {lang === 'ar' ? member.role_ar : member.role_en}
+          </p>
+          <p class="font-body text-small text-gold-accent">
+            {tt.rating_label} {member.rating.toFixed(1)}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- See full team -->
+    <div class="text-center reveal">
+      <a
+        href={FRESHA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 font-body font-semibold text-small text-calma-mid hover:text-calma-deep transition-colors duration-200 underline underline-offset-4"
+      >
+        {tt.see_all}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-directional" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

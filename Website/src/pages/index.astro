@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import SignatureSection from '../components/SignatureSection.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import VisitSection from '../components/VisitSection.astro';
+import en from '../i18n/en.json';
+
+const t = en;
+const lang = 'en';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+  "name": "Calma Men's Massage, Salon & Spa",
+  "alternateName": "كالما",
+  "description": t.site.description,
+  "url": "https://calma.bh",
+  "telephone": "+97366677745",
+  "priceRange": "$$",
+  "currenciesAccepted": "BHD",
+  "image": "https://calma.bh/images/room-massage-copper.jpg",
+  "logo": "https://calma.bh/calma-logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Building 2131, Road 3640",
+    "addressLocality": "Al-Seef",
+    "postalCode": "436",
+    "addressCountry": "BH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 26.2285,
+    "longitude": 50.5584
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "22:00",
+      "name": "Salon"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "00:00",
+      "name": "Massage & Spa"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1390",
+    "bestRating": "5"
+  },
+  "sameAs": [
+    "https://instagram.com/calma_bh",
+    "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu"
+  ]
+};
+---
+
+<BaseLayout t={t} lang={lang} schema={schema}>
+  <Fragment slot="preload">
+    <link
+      rel="preload"
+      as="image"
+      href="/images/room-massage-copper.jpg"
+      type="image/jpeg"
+    />
+  </Fragment>
+
+  <Hero t={t} />
+  <ExperienceSection t={t} />
+  <ServicesSection t={t} lang={lang} />
+  <SignatureSection t={t} />
+  <TeamGrid t={t} lang={lang} />
+  <VisitSection t={t} />
+</BaseLayout>

@@ -1,0 +1,166 @@
+---
+import BookButton from './BookButton.astro';
+import LanguageToggle from './LanguageToggle.astro';
+
+interface Props {
+  t: Record<string, any>;
+  lang: 'en' | 'ar';
+  currentPath: string;
+}
+
+const { t, lang, currentPath } = Astro.props;
+const nav = t.nav;
+---
+
+<header id="site-header" class="fixed inset-block-start-0 inset-inline-start-0 inset-inline-end-0 z-50 transition-all duration-300">
+  <div class="content-wrap px-5 md:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <!-- Logo -->
+      <a href={lang === 'ar' ? '/ar' : '/'} aria-label={t.aria.logo} class="flex-shrink-0">
+        <img
+          src="/calma-logo.svg"
+          alt="Calma"
+          width="44"
+          height="44"
+          class="w-11 h-11 rounded-full"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-8">
+        {[
+          { key: 'experience', href: '#experience' },
+          { key: 'services',   href: '#services' },
+          { key: 'team',       href: '#team' },
+          { key: 'visit',      href: '#visit' },
+        ].map(({ key, href }) => (
+          <a
+            href={href}
+            class="nav-link font-body font-medium text-small tracking-wide opacity-80 hover:opacity-100 transition-opacity duration-200 relative after:absolute after:inset-block-end-[-2px] after:inset-inline-start-0 after:w-0 after:h-px after:bg-current after:transition-[width] after:duration-300 hover:after:w-full"
+          >
+            {nav[key]}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right actions -->
+      <div class="flex items-center gap-3">
+        <LanguageToggle
+          currentLang={lang}
+          currentPath={currentPath}
+          label={nav.lang_toggle}
+          ariaLabel={t.aria.lang_toggle}
+        />
+        <BookButton
+          label={nav.book_now}
+          variant="filled"
+          class="hidden sm:inline-flex text-xs px-4 py-2"
+          ariaLabel={t.aria.book_fresha}
+        />
+        <!-- Mobile hamburger -->
+        <button
+          id="hamburger"
+          type="button"
+          aria-label={nav.open_menu}
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+          class="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-10 p-2"
+        >
+          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300 origin-center"></span>
+          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300"></span>
+          <span class="hamburger-line block h-px w-6 bg-current transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div
+  id="mobile-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label={nav.open_menu}
+  class="fixed inset-0 z-40 flex flex-col justify-center items-center bg-calma-deep text-text-inverse translate-x-full [dir=rtl]:translate-x-[-100%] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden"
+>
+  <nav class="flex flex-col items-center gap-8 text-center" aria-label="Mobile navigation">
+    {[
+      { key: 'experience', href: '#experience' },
+      { key: 'services',   href: '#services' },
+      { key: 'team',       href: '#team' },
+      { key: 'visit',      href: '#visit' },
+    ].map(({ key, href }) => (
+      <a
+        href={href}
+        class="drawer-link font-display text-h3 font-medium hover:text-calma-soft transition-colors duration-200"
+        data-close-drawer
+      >
+        {nav[key]}
+      </a>
+    ))}
+  </nav>
+  <div class="mt-12 flex flex-col items-center gap-4">
+    <BookButton label={nav.book_now} variant="outlined" ariaLabel={t.aria.book_fresha} />
+  </div>
+</div>
+
+<script>
+  const header    = document.getElementById('site-header')!;
+  const hamburger = document.getElementById('hamburger')!;
+  const drawer    = document.getElementById('mobile-drawer')!;
+  const lines     = hamburger.querySelectorAll('.hamburger-line');
+
+  /* Sticky: add backdrop blur + bg after scrolling past hero */
+  const onScroll = () => {
+    const past = window.scrollY > 60;
+    header.classList.toggle('bg-warm-cream/90', past);
+    header.classList.toggle('backdrop-blur-nav', past);
+    header.classList.toggle('border-b', past);
+    header.classList.toggle('border-warm-stone', past);
+    header.classList.toggle('shadow-[0_1px_0_rgba(61,92,92,0.08)]', past);
+    /* Text color: dark when scrolled (on cream bg), inverse on hero */
+    header.classList.toggle('text-text-primary', past);
+    header.classList.toggle('text-text-inverse', !past);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Hamburger toggle */
+  const openDrawer = () => {
+    drawer.classList.remove('translate-x-full', '[dir=rtl]:translate-x-[-100%]');
+    drawer.classList.add('translate-x-0');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', hamburger.dataset.closeLabel ?? 'Close menu');
+    document.body.style.overflow = 'hidden';
+    /* Animate to ✕ */
+    lines[0].classList.add('translate-y-[6px]', 'rotate-45');
+    lines[1].classList.add('opacity-0');
+    lines[2].classList.add('-translate-y-[6px]', '-rotate-45');
+  };
+
+  const closeDrawer = () => {
+    drawer.classList.add('translate-x-full');
+    drawer.classList.remove('translate-x-0');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    lines[0].classList.remove('translate-y-[6px]', 'rotate-45');
+    lines[1].classList.remove('opacity-0');
+    lines[2].classList.remove('-translate-y-[6px]', '-rotate-45');
+  };
+
+  hamburger.addEventListener('click', () => {
+    drawer.getAttribute('aria-expanded') === 'true' ? closeDrawer() : openDrawer();
+  });
+
+  /* Close on nav link click */
+  drawer.querySelectorAll('[data-close-drawer]').forEach(el =>
+    el.addEventListener('click', closeDrawer)
+  );
+
+  /* Close on Escape */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>

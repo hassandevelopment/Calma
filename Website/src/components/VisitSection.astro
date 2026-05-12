@@ -1,0 +1,149 @@
+---
+import WhatsAppButton from './WhatsAppButton.astro';
+
+const MAPS_URL = 'https://maps.app.goo.gl/pMESauvQZ3H1NGZX6';
+const MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.2!2d50.5584!3d26.2285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zCalma+Massage+%26+Spa!5e0!3m2!1sen!2sbh!4v1699999999999';
+
+interface Props {
+  t: Record<string, any>;
+}
+
+const { t } = Astro.props;
+const v = t.visit;
+---
+
+<section id="visit" class="bg-calma-deep text-text-inverse section-wrap">
+  <div class="content-wrap">
+
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow text-text-inverse/60 mb-3">{v.eyebrow}</p>
+      <h2 class="font-display text-h2 text-text-inverse font-medium leading-display">{v.headline}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+      <!-- Left: info -->
+      <div class="flex flex-col gap-8 reveal">
+
+        <!-- Hours -->
+        <div>
+          <h3 class="font-body font-semibold text-small uppercase tracking-eyebrow text-text-inverse/50 mb-4">
+            {v.hours_title}
+          </h3>
+          <div class="flex flex-col gap-3">
+            <div class="flex justify-between items-start gap-4 border-b border-text-inverse/10 pb-3">
+              <span class="font-body font-medium text-text-inverse">{v.salon_label}</span>
+              <span class="font-body text-small text-text-inverse/70 text-end">{v.salon_hours}</span>
+            </div>
+            <div class="flex justify-between items-start gap-4">
+              <span class="font-body font-medium text-text-inverse">{v.spa_label}</span>
+              <span class="font-body text-small text-text-inverse/70 text-end">{v.spa_hours}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div>
+          <h3 class="font-body font-semibold text-small uppercase tracking-eyebrow text-text-inverse/50 mb-3">
+            {v.address_title}
+          </h3>
+          <p class="font-body text-body text-text-inverse/80 max-w-none">
+            {v.address}
+          </p>
+        </div>
+
+        <!-- Amenities -->
+        <div>
+          <h3 class="font-body font-semibold text-small uppercase tracking-eyebrow text-text-inverse/50 mb-3">
+            {v.amenities_title}
+          </h3>
+          <ul class="flex flex-wrap gap-2">
+            {v.amenities.map((a: string) => (
+              <li class="font-body text-small text-text-inverse/70 bg-text-inverse/10 px-3 py-1.5 rounded-btn">
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.aria.map}
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-btn font-body font-semibold text-small border-2 border-text-inverse text-text-inverse hover:bg-text-inverse/10 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+          >
+            <!-- Map pin icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            {v.directions}
+          </a>
+          <WhatsAppButton label={v.whatsapp_chat} variant="outlined" ariaLabel={t.aria.whatsapp} />
+        </div>
+
+        <!-- Trust strip -->
+        <div class="flex items-center gap-3 pt-4 border-t border-text-inverse/10">
+          <span class="text-gold-accent text-lg" aria-hidden="true">★★★★★</span>
+          <span class="font-body text-small text-text-inverse/70">{t.hero.trust}</span>
+        </div>
+      </div>
+
+      <!-- Right: map -->
+      <div class="reveal" id="map-container">
+        <div class="rounded-card overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] bg-calma-mid/30">
+          <!-- Map iframe loaded lazily via JS -->
+          <div id="map-placeholder" class="w-full h-full flex items-center justify-center">
+            <button
+              id="load-map-btn"
+              class="font-body text-small text-text-inverse/70 hover:text-text-inverse transition-colors duration-200 flex flex-col items-center gap-2"
+              aria-label={t.aria.map}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>{v.directions}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ MAPS_EMBED }}>
+  /* Lazy-load the Google Maps iframe when the section enters viewport or user clicks */
+  const placeholder = document.getElementById('map-placeholder');
+  const loadBtn     = document.getElementById('load-map-btn');
+  const container   = document.getElementById('map-container');
+
+  const loadMap = () => {
+    if (!placeholder) return;
+    const iframe = document.createElement('iframe');
+    iframe.src           = MAPS_EMBED;
+    iframe.width         = '100%';
+    iframe.height        = '100%';
+    iframe.style.border  = '0';
+    iframe.allowFullscreen = true;
+    iframe.loading       = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.title         = 'Calma location on Google Maps';
+    placeholder.replaceWith(iframe);
+  };
+
+  loadBtn?.addEventListener('click', loadMap);
+
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      loadMap();
+      obs.disconnect();
+    }
+  }, { rootMargin: '200px' });
+
+  if (container) obs.observe(container);
+</script>

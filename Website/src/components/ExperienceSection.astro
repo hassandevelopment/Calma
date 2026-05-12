@@ -1,0 +1,54 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+
+const { t } = Astro.props;
+const e = t.experience;
+
+const images = [
+  { src: '/images/salon-haircut-back.jpg',     alt: 'Calma barber styling hair in the salon' },
+  { src: '/images/room-massage-dim.jpg',        alt: 'A serene massage treatment room at Calma' },
+  { src: '/images/product-thalgo-tray.jpg',     alt: 'Thalgo marine beauty products used at Calma' },
+  { src: '/images/treatment-headwrap.jpg',      alt: 'Head massage treatment at Calma' },
+];
+---
+
+<section id="experience" class="bg-warm-cream section-wrap">
+  <div class="content-wrap">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Text -->
+      <div class="order-2 lg:order-1">
+        <p class="eyebrow mb-4 reveal">{e.eyebrow}</p>
+        <h2 class="font-display text-h2 text-text-primary font-medium mb-6 leading-display reveal">
+          {e.headline}
+        </h2>
+        <p class="font-body text-body-lg text-text-muted leading-body reveal">
+          {e.body}
+        </p>
+      </div>
+
+      <!-- Image grid -->
+      <div class="order-1 lg:order-2 grid grid-cols-2 gap-3 reveal">
+        {images.map((img, i) => (
+          <div
+            class="overflow-hidden rounded-image-lg aspect-[4/5]"
+            style={`transition-delay: ${i * 80}ms`}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="400"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            />
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

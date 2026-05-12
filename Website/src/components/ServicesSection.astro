@@ -1,0 +1,170 @@
+---
+import services from '../data/services.json';
+import BookButton from './BookButton.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+
+interface Props {
+  t: Record<string, any>;
+  lang: 'en' | 'ar';
+}
+
+const { t, lang } = Astro.props;
+const s = t.services;
+
+const tabs = [
+  { key: 'massage', label: s.tab_massage, data: services.massage },
+  { key: 'spa',     label: s.tab_spa,     data: services.spa },
+  { key: 'salon',   label: s.tab_salon,   data: services.salon },
+];
+---
+
+<section id="services" class="bg-warm-cream texture-paper section-wrap relative">
+  <div class="content-wrap">
+
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow mb-3">{s.eyebrow}</p>
+      <h2 class="font-display text-h2 text-text-primary font-medium leading-display">{s.headline}</h2>
+    </div>
+
+    <!-- Tab buttons -->
+    <div
+      role="tablist"
+      aria-label={s.headline}
+      class="flex justify-center gap-2 mb-10 reveal"
+    >
+      {tabs.map(({ key, label }, i) => (
+        <button
+          role="tab"
+          id={`tab-${key}`}
+          aria-controls={`panel-${key}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-tab={key}
+          class={`tab-btn px-5 py-2.5 rounded-btn font-body font-semibold text-small tracking-wide transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${i === 0 ? 'bg-calma-deep text-text-inverse' : 'bg-warm-stone text-text-muted hover:bg-warm-stone/70'}`}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Tab panels -->
+    {tabs.map(({ key, data }, i) => (
+      <div
+        id={`panel-${key}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${key}`}
+        hidden={i !== 0}
+        class="tab-panel"
+      >
+        <div class="rounded-card bg-white/60 overflow-hidden shadow-card">
+          <!-- Header row -->
+          <div class="hidden md:grid grid-cols-[1fr_auto_auto_auto] gap-4 px-6 py-3 bg-warm-stone/50 text-text-muted font-body font-semibold text-small uppercase tracking-eyebrow">
+            <span>{s.col_service}</span>
+            <span class="text-end">{s.col_duration}</span>
+            <span class="text-end">{s.col_price}</span>
+            <span class="sr-only">{s.book_row}</span>
+          </div>
+
+          <!-- Service rows -->
+          {data.map((row: any) => (
+            <div class="service-row gold-divider grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-1 md:gap-4 px-6 py-4 items-center hover:bg-warm-cream/60 transition-colors duration-200">
+
+              <!-- Name (AR + EN) -->
+              <div>
+                <span class="block font-body font-medium text-text-primary text-[0.95rem]">
+                  {lang === 'ar' ? row.ar : row.en}
+                </span>
+                {lang === 'ar'
+                  ? <span class="block font-body text-small text-text-muted">{row.en}</span>
+                  : <span class="block font-body text-small text-text-muted" lang="ar" dir="rtl">{row.ar}</span>
+                }
+                {(row.note_en || row.note_ar) && (
+                  <span class="block text-[0.75rem] text-text-muted/70 italic mt-0.5">
+                    {lang === 'ar' ? row.note_ar : row.note_en}
+                  </span>
+                )}
+              </div>
+
+              <!-- Duration -->
+              <div class="md:text-end">
+                <span class="font-body text-small text-text-muted">
+                  {row.durations.join(' / ')} {s.min}
+                </span>
+              </div>
+
+              <!-- Price -->
+              <div class="md:text-end">
+                <span class="font-body font-semibold text-text-primary">
+                  {row.price_from ? `${s.from} ` : ''}
+                  {row.prices.join(' / ')} {s.bhd}
+                </span>
+              </div>
+
+              <!-- Book link -->
+              <div class="md:text-end">
+                <a
+                  href="https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-[0.75rem] font-semibold text-calma-mid hover:text-calma-deep underline underline-offset-2 transition-colors duration-200"
+                >
+                  {s.book_row}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+  </div>
+
+  <!-- Sticky mobile CTA bar -->
+  <div
+    id="services-sticky-cta"
+    class="fixed inset-block-end-0 inset-inline-start-0 inset-inline-end-0 z-30 bg-calma-deep/95 backdrop-blur-sm px-5 py-3 flex gap-3 justify-center items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden"
+    aria-hidden="true"
+  >
+    <BookButton label={s.sticky_book} variant="filled" class="text-xs px-4 py-2.5 flex-1" />
+    <WhatsAppButton label={s.sticky_whatsapp} variant="outlined" class="text-xs px-4 py-2.5 flex-1" />
+  </div>
+</section>
+
+<script>
+  /* Tab switching */
+  const tabBtns  = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels   = document.querySelectorAll<HTMLElement>('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab!;
+
+      tabBtns.forEach(b => {
+        const active = b.dataset.tab === target;
+        b.setAttribute('aria-selected', String(active));
+        b.className = b.className
+          .replace(/bg-calma-deep text-text-inverse|bg-warm-stone text-text-muted hover:bg-warm-stone\/70/g, '')
+          .trim();
+        b.classList.add(...(active
+          ? ['bg-calma-deep', 'text-text-inverse']
+          : ['bg-warm-stone', 'text-text-muted', 'hover:bg-warm-stone/70']
+        ));
+      });
+
+      panels.forEach(p => {
+        p.hidden = p.id !== `panel-${target}`;
+      });
+    });
+  });
+
+  /* Sticky CTA: show while #services is in viewport on mobile */
+  const section  = document.getElementById('services')!;
+  const stickyCta = document.getElementById('services-sticky-cta')!;
+
+  const stickyObs = new IntersectionObserver(entries => {
+    const visible = entries[0].isIntersecting;
+    stickyCta.classList.toggle('translate-y-full', !visible);
+    stickyCta.setAttribute('aria-hidden', String(!visible));
+  }, { threshold: 0.1 });
+
+  stickyObs.observe(section);
+</script>

@@ -1,0 +1,94 @@
+---
+import BookButton from './BookButton.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+
+interface Props {
+  t: Record<string, any>;
+}
+
+const { t } = Astro.props;
+const h = t.hero;
+---
+
+<section
+  id="hero"
+  class="relative min-h-[100dvh] max-h-[900px] flex items-end pb-20 md:pb-28 overflow-hidden"
+  aria-label={h.headline}
+>
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <img
+      src="/images/room-massage-copper.jpg"
+      alt=""
+      role="presentation"
+      width="1920"
+      height="1080"
+      class="w-full h-full object-cover object-center"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <!-- Gradient overlay -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(61,92,92,0.58) 60%, rgba(61,92,92,0.82) 100%);"
+      aria-hidden="true"
+    ></div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap section-wrap relative z-10 pt-0 pb-0 w-full">
+    <div class="max-w-2xl">
+
+      <!-- Eyebrow -->
+      <p class="eyebrow text-text-inverse/70 mb-4 reveal">
+        Calma · Al-Seef, Bahrain
+      </p>
+
+      <!-- Headline -->
+      <h1 class="font-display text-h1 text-text-inverse font-medium mb-5 leading-display reveal">
+        {h.headline}
+      </h1>
+
+      <!-- Sub -->
+      <p class="font-body text-body-lg text-text-inverse/80 mb-8 max-w-[45ch] leading-body reveal">
+        {h.sub}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-3 mb-8 reveal">
+        <BookButton
+          label={h.cta_book}
+          variant="filled"
+          ariaLabel={t.aria.book_fresha}
+          class="text-sm"
+        />
+        <WhatsAppButton
+          label={h.cta_whatsapp}
+          variant="outlined"
+          ariaLabel={t.aria.whatsapp}
+          class="text-sm"
+        />
+      </div>
+
+      <!-- Trust strip -->
+      <p class="font-body text-small text-text-inverse/60 reveal">
+        {h.trust}
+      </p>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 inset-inline-start-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-inverse/40" aria-hidden="true">
+    <div class="w-px h-12 overflow-hidden">
+      <div class="w-full h-full bg-text-inverse/40 origin-top animate-[scroll-line_2s_ease-in-out_infinite]"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll-line {
+    0%, 100% { transform: scaleY(0) translateY(-100%); opacity: 0; }
+    20%       { opacity: 1; }
+    80%       { transform: scaleY(1) translateY(0); opacity: 1; }
+  }
+</style>

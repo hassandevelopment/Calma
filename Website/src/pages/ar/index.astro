@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ExperienceSection from '../../components/ExperienceSection.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import SignatureSection from '../../components/SignatureSection.astro';
+import TeamGrid from '../../components/TeamGrid.astro';
+import VisitSection from '../../components/VisitSection.astro';
+import ar from '../../i18n/ar.json';
+
+const t = ar;
+const lang = 'ar';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+  "name": "كالما — مساج وصالون وسبا للرجال",
+  "alternateName": "Calma Men's Massage, Salon & Spa",
+  "description": t.site.description,
+  "url": "https://calma.bh/ar",
+  "telephone": "+97366677745",
+  "priceRange": "$$",
+  "currenciesAccepted": "BHD",
+  "image": "https://calma.bh/images/room-massage-copper.jpg",
+  "logo": "https://calma.bh/calma-logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "مبنى 2131، طريق 3640",
+    "addressLocality": "السيف",
+    "postalCode": "436",
+    "addressCountry": "BH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 26.2285,
+    "longitude": 50.5584
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1390",
+    "bestRating": "5"
+  },
+  "sameAs": [
+    "https://instagram.com/calma_bh",
+    "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu"
+  ]
+};
+---
+
+<BaseLayout t={t} lang={lang} schema={schema}>
+  <Fragment slot="preload">
+    <link
+      rel="preload"
+      as="image"
+      href="/images/room-massage-copper.jpg"
+      type="image/jpeg"
+    />
+  </Fragment>
+
+  <Hero t={t} />
+  <ExperienceSection t={t} />
+  <ServicesSection t={t} lang={lang} />
+  <SignatureSection t={t} />
+  <TeamGrid t={t} lang={lang} />
+  <VisitSection t={t} />
+</BaseLayout>

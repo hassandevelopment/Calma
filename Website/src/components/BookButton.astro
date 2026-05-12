@@ -1,0 +1,31 @@
+---
+/* Single source of truth for the Fresha booking URL.
+   Change the URL here and it propagates everywhere. */
+const FRESHA_URL = 'https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu';
+
+interface Props {
+  label: string;
+  variant?: 'filled' | 'outlined';
+  class?: string;
+  ariaLabel?: string;
+}
+
+const { label, variant = 'filled', class: className = '', ariaLabel } = Astro.props;
+
+const base = 'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-btn font-body font-semibold text-small tracking-wide transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-3';
+
+const styles = {
+  filled:   'bg-calma-deep text-text-inverse hover:bg-calma-mid hover:-translate-y-0.5 hover:shadow-card-hover active:scale-[0.98]',
+  outlined: 'border-2 border-text-inverse text-text-inverse hover:bg-white/10 hover:-translate-y-0.5 active:scale-[0.98]',
+};
+---
+
+<a
+  href={FRESHA_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`${base} ${styles[variant]} ${className}`}
+  aria-label={ariaLabel ?? label}
+>
+  {label}
+</a>

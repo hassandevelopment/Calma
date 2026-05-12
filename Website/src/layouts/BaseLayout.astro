@@ -1,0 +1,125 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  t: Record<string, any>;
+  lang: 'en' | 'ar';
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  schema?: object;
+}
+
+const {
+  t,
+  lang,
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage = '/og-image.jpg',
+  canonicalUrl,
+  schema,
+} = Astro.props;
+
+const pageTitle       = title       ?? t.site.title;
+const pageDescription = description ?? t.site.description;
+const pageOgTitle     = ogTitle     ?? t.site.og_title;
+const pageOgDesc      = ogDescription ?? t.site.og_description;
+
+const siteUrl     = 'https://calma.bh';
+const canonicalEN = `${siteUrl}${Astro.url.pathname}`;
+const canonicalAR = lang === 'en'
+  ? `${siteUrl}/ar${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`
+  : `${siteUrl}${Astro.url.pathname}`;
+const canonicalENAlt = lang === 'ar'
+  ? `${siteUrl}${Astro.url.pathname.replace(/^\/ar/, '') || '/'}`
+  : `${siteUrl}${Astro.url.pathname}`;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang} dir={t.dir} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3D5C5C" />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href={canonicalUrl ?? `${siteUrl}${currentPath}`} />
+    <link rel="alternate" hreflang="en" href={canonicalENAlt} />
+    <link rel="alternate" hreflang="ar" href={`${siteUrl}/ar${currentPath.replace(/^\/ar/, '') || ''}`} />
+    <link rel="alternate" hreflang="x-default" href={canonicalENAlt} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalUrl ?? `${siteUrl}${currentPath}`} />
+    <meta property="og:title"       content={pageOgTitle} />
+    <meta property="og:description" content={pageOgDesc} />
+    <meta property="og:image"       content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale"      content={lang === 'ar' ? 'ar_BH' : 'en_BH'} />
+    <meta property="og:site_name"   content="Calma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageOgTitle} />
+    <meta name="twitter:description" content={pageOgDesc} />
+    <meta name="twitter:image"       content={`${siteUrl}${ogImage}`} />
+
+    <!-- Fonts: preload critical woff2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Hero image preload (set per page) -->
+    <slot name="preload" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Schema.org JSON-LD -->
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+  </head>
+
+  <body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">{t.footer.skip_to_content}</a>
+
+    <Header t={t} lang={lang} currentPath={currentPath} />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer t={t} lang={lang} />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

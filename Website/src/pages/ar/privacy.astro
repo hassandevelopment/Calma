@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ar from '../../i18n/ar.json';
+---
+
+<BaseLayout t={ar} lang="ar" title={ar.privacy.title} description={ar.privacy.description}>
+  <div class="section-wrap">
+    <div class="content-wrap max-w-reading mx-auto">
+      <h1 class="font-display text-h2 text-text-primary font-medium mb-8">{ar.privacy.title}</h1>
+      <div class="prose font-body text-text-muted leading-body space-y-6">
+        <p>توضّح سياسة الخصوصية هذه كيفية تعامل كالما مع المعلومات عند زيارتك لموقع calma.bh.</p>
+        <h2 class="font-display text-h3 text-text-primary">المعلومات التي نجمعها</h2>
+        <p>لا يستخدم هذا الموقع ملفات تعريف الارتباط لتتبعك. نستخدم تحليلات حفاظاً على الخصوصية (Cloudflare Web Analytics) لا تجمع أي معلومات تعريف شخصية ولا تتبعك عبر المواقع.</p>
+        <h2 class="font-display text-h3 text-text-primary">خدمات الطرف الثالث</h2>
+        <p>يرتبط هذا الموقع بـ Fresha للحجز وواتساب للتواصل المباشر. يُرجى مراجعة سياسات الخصوصية الخاصة بتلك الخدمات.</p>
+        <h2 class="font-display text-h3 text-text-primary">التواصل</h2>
+        <p>لأي استفسارات تتعلق بالخصوصية، تواصل معنا عبر <a href="https://wa.me/97366677745" class="text-calma-mid underline underline-offset-2">واتساب</a>.</p>
+        <p class="text-small text-text-muted/60">آخر تحديث: مايو 2026</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

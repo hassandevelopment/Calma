@@ -1,0 +1,37 @@
+{
+  "massage": [
+    { "ar": "المساج السويدي",          "en": "Swedish Massage",            "durations": [30, 60, 90], "prices": [12.1, 19.8, 27.5] },
+    { "ar": "المساج العميق",            "en": "Deep Tissue Massage",        "durations": [60, 90],     "prices": [22, 29.7] },
+    { "ar": "المساج التايلندي",         "en": "Thai Massage",               "durations": [60, 90],     "prices": [19.8, 27.5] },
+    { "ar": "مساج الشياتسو",            "en": "Shiatsu Massage",            "durations": [60, 90],     "prices": [19.8, 27.5] },
+    { "ar": "المساج الرياضي",           "en": "Sport Massage",              "durations": [60, 90],     "prices": [22, 29.7] },
+    { "ar": "مساج الأكواب الهوائية",    "en": "Air Cupping Massage",        "durations": [30],         "prices": [13.2] },
+    { "ar": "مساج الأحجار الساخنة",     "en": "Hot Stone Massage",          "durations": [90],         "prices": [33] },
+    { "ar": "مساج القدمين",             "en": "Foot Massage",               "durations": [30, 60],     "prices": [12.1, 16.5] },
+    { "ar": "مساج الظهر",               "en": "Back Massage",               "durations": [30],         "prices": [12.1] },
+    { "ar": "مساج الظهر والرأس",        "en": "Back & Head Massage",        "durations": [45],         "prices": [16.5] }
+  ],
+  "spa": [
+    { "ar": "الحمام المغربي",            "en": "Moroccan Bath",                      "durations": [60],     "prices": [16.5] },
+    { "ar": "حمام البخار",               "en": "Steam Bath",                         "durations": [15],     "prices": [5.5] },
+    { "ar": "الاستحمام",                 "en": "Shower",                             "durations": [15],     "prices": [1.5] },
+    { "ar": "مانيكير",                   "en": "Manicure",                           "durations": [30],     "prices": [8.25] },
+    { "ar": "باديكير",                   "en": "Pedicure",                           "durations": [30],     "prices": [8.25] },
+    { "ar": "مانيكير و باديكير",         "en": "Manicure & Pedicure",                "durations": [60],     "prices": [15.4], "note_en": "Excludes foot care", "note_ar": "لا تشمل العناية بأسفل القدم" },
+    { "ar": "سبا القدم",                 "en": "Foot Spa",                           "durations": [60],     "prices": [15.4], "note_en": "Foot care", "note_ar": "العناية بالجلد أسفل القدم" }
+  ],
+  "salon": [
+    { "ar": "قص الشعر",                  "en": "Hair Cut",                   "durations": [30],    "prices": [5.5] },
+    { "ar": "تحديد اللحية",              "en": "Shaving",                    "durations": [30],    "prices": [3.85] },
+    { "ar": "قص الشعر مع تحديد اللحية", "en": "Hair Cut & Shaving",         "durations": [60],    "prices": [8.8] },
+    { "ar": "تسريحة الشعر",              "en": "Hair Style",                 "durations": [30],    "prices": [3.85] },
+    { "ar": "قص الشعر للأطفال",          "en": "Kids Hair Cut",              "durations": [30],    "prices": [3.85], "note_en": "4–8 years old", "note_ar": "٤–٨ سنوات" },
+    { "ar": "شمع الوجه / خيط",           "en": "Face Waxing / Threading",    "durations": [30],    "prices": [3.85] },
+    { "ar": "صبغ الشعر",                 "en": "Hair Color",                 "durations": [45],    "prices": [8.8] },
+    { "ar": "صبغ اللحية",                "en": "Beard Color",                "durations": [30],    "prices": [4.4] },
+    { "ar": "تنظيف الوجه",               "en": "Basic Facial Cleaning",      "durations": [30],    "prices": [5.5] },
+    { "ar": "تنظيف الوجه العميق",        "en": "Deep Facial Cleaning",       "durations": [45],    "prices": [11] },
+    { "ar": "علاج القشرة",               "en": "Dandruff Treatment",         "durations": [30],    "prices": [6.6] },
+    { "ar": "علاج الكيراتين",            "en": "Keratin Treatment",          "durations": [120],   "prices": [33], "price_from": true }
+  ]
+}
