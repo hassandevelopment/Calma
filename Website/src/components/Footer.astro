@@ -10,7 +10,8 @@ interface Props {
 
 const { t, lang } = Astro.props;
 const f = t.footer;
-const homeHref = lang === 'ar' ? '/ar' : '/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeHref = lang === 'ar' ? `${base}/ar` : `${base}/`;
 ---
 
 <footer class="bg-calma-deep text-text-inverse">
@@ -20,7 +21,7 @@ const homeHref = lang === 'ar' ? '/ar' : '/';
       <!-- Col 1: Brand -->
       <div class="flex flex-col gap-4">
         <a href={homeHref} aria-label={t.aria.logo}>
-          <img src="/calma-logo.svg" alt="Calma" width="48" height="48" class="w-12 h-12 rounded-full opacity-90" />
+          <img src={`${base}/calma-logo.svg`} alt="Calma" width="48" height="48" class="w-12 h-12 rounded-full opacity-90" />
         </a>
         <p class="font-display text-lg text-text-inverse/70 italic">{f.tagline}</p>
       </div>

@@ -10,6 +10,7 @@ import en from '../i18n/en.json';
 
 const t = en;
 const lang = 'en';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const schema = {
   "@context": "https://schema.org",
@@ -69,7 +70,7 @@ const schema = {
     <link
       rel="preload"
       as="image"
-      href="/images/room-massage-copper.jpg"
+      href={`${base}/images/room-massage-copper.jpg`}
       type="image/jpeg"
     />
   </Fragment>

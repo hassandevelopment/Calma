@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { currentLang, currentPath, label, ariaLabel } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /* Swap locale in URL: /ar/... → /... and vice versa */
 const targetHref = currentLang === 'en'
-  ? `/ar${currentPath === '/' ? '' : currentPath}`
-  : currentPath.replace(/^\/ar/, '') || '/';
+  ? `${base}/ar${currentPath === '/' ? '' : currentPath}`
+  : `${base}${currentPath.replace(/^\/ar/, '') || '/'}`;
 
 const targetLang = currentLang === 'en' ? 'ar' : 'en';
 ---

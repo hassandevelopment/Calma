@@ -10,6 +10,7 @@ import ar from '../../i18n/ar.json';
 
 const t = ar;
 const lang = 'ar';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const schema = {
   "@context": "https://schema.org",
@@ -53,7 +54,7 @@ const schema = {
     <link
       rel="preload"
       as="image"
-      href="/images/room-massage-copper.jpg"
+      href={`${base}/images/room-massage-copper.jpg`}
       type="image/jpeg"
     />
   </Fragment>
