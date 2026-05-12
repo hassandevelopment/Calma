@@ -66,7 +66,7 @@ const WHATSAPP_URL = "https://wa.me/97366677745";
       </div>
 
       <!-- Right: SVG map card -->
-      <div class="map-card reveal" aria-hidden="true">
+      <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" class="map-card reveal" aria-label={t.aria.map}>
         <svg viewBox="0 0 400 500" preserveAspectRatio="none">
           <defs>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -93,7 +93,8 @@ const WHATSAPP_URL = "https://wa.me/97366677745";
           <span>26.2285° N · 50.5584° E</span>
           <span>Al-Seef 436</span>
         </div>
-      </div>
+        <div class="map-cta-hint">Open in Maps ↗</div>
+      </a>
 
     </div>
   </div>
