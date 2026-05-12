@@ -15,10 +15,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <header id="site-header" class="fixed inset-block-start-0 inset-inline-start-0 inset-inline-end-0 z-50 transition-all duration-300">
   <div class="content-wrap px-5 md:px-8">
-    <div class="relative flex items-center justify-between h-16 md:h-20">
+    <div class="grid grid-cols-[1fr_auto_1fr] items-center h-16 md:h-20">
 
       <!-- Logo -->
-      <a href={lang === 'ar' ? '/ar' : '/'} aria-label={t.aria.logo} class="flex-shrink-0">
+      <a href={lang === 'ar' ? '/ar' : '/'} aria-label={t.aria.logo} class="justify-self-start">
         <img
           src={`${base}/calma-logo.svg`}
           alt="Calma"
@@ -28,8 +28,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         />
       </a>
 
-      <!-- Desktop nav -->
-      <nav aria-label="Main navigation" class="hidden lg:flex absolute inset-x-0 top-0 bottom-0 justify-center items-center gap-6 pointer-events-none">
+      <!-- Desktop nav (auto-width center column) -->
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-6">
         {[
           { key: 'experience', href: '#experience' },
           { key: 'services',   href: '#services' },
@@ -38,7 +38,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         ].map(({ key, href }) => (
           <a
             href={href}
-            class="pointer-events-auto nav-link font-body font-medium text-small tracking-wide opacity-80 hover:opacity-100 transition-opacity duration-200 relative after:absolute after:inset-block-end-[-2px] after:inset-inline-start-0 after:w-0 after:h-px after:bg-current after:transition-[width] after:duration-300 hover:after:w-full"
+            class="nav-link font-body font-medium text-small tracking-wide opacity-80 hover:opacity-100 transition-opacity duration-200 relative after:absolute after:inset-block-end-[-2px] after:inset-inline-start-0 after:w-0 after:h-px after:bg-current after:transition-[width] after:duration-300 hover:after:w-full"
           >
             {nav[key]}
           </a>
@@ -46,7 +46,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </nav>
 
       <!-- Right actions -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center justify-end gap-3">
         <LanguageToggle
           currentLang={lang}
           currentPath={currentPath}
