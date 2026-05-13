@@ -9,6 +9,7 @@ interface Props {
 const { t, lang } = Astro.props;
 const tm = t.team_section;
 const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-nyt1nacu";
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section" style="background: var(--warm-cream)">
@@ -25,17 +26,28 @@ const FRESHA_URL = "https://www.fresha.com/a/calma-massage-spa-seef-road-3627-ny
     </div>
 
     <div class="team-grid">
-      {team.map((member: any) => (
-        <div class="team-card reveal">
+      {team.map((member: any, i: number) => (
+        <a
+          class="team-card reveal"
+          href={FRESHA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={`transition-delay: ${i * 50}ms`}
+        >
           <div class="team-photo">
-            <div class="placeholder" aria-hidden="true">{member.name[0]}</div>
+            <img
+              src={`${base}/images/${member.photo}`}
+              alt={member.name}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <p class="name">{member.name}</p>
           <span class="role">
             {lang === 'ar' ? member.role_ar ?? member.role : member.role}
             {' · '}<span class="rating">★ {member.rating}</span>
           </span>
-        </div>
+        </a>
       ))}
     </div>
 

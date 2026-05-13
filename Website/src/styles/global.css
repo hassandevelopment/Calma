@@ -1007,22 +1007,24 @@ p { margin: 0; }
 }
 .team-card {
   display: flex; flex-direction: column; gap: 14px; padding-block: 8px;
+  color: inherit;
+  transition: transform 280ms var(--ease-out);
 }
+.team-card:hover { transform: translateY(-4px); }
 .team-photo {
   aspect-ratio: 4/5;
   background: var(--warm-stone);
   position: relative;
   overflow: hidden;
+  border-radius: 2px;
 }
-.team-photo .placeholder {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-display); font-size: 64px;
-  color: color-mix(in oklab, var(--calma-deep) 38%, transparent);
-  background:
-    repeating-linear-gradient(45deg, transparent 0 14px, color-mix(in oklab, var(--calma-deep) 4%, transparent) 14px 28px),
-    var(--warm-stone);
+.team-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%;
+  transition: transform 600ms var(--ease-out);
 }
+.team-card:hover .team-photo img { transform: scale(1.04); }
 .team-card .name {
   font-family: var(--ff-display); font-size: 18px; color: var(--calma-deep); margin: 0;
 }
